@@ -9,7 +9,7 @@ node ('slave1') {
     }
     stage('Docker delete previous build') {        
         // sh "docker rm -f aperture_web"
-        sh "docker ps -q --filter 'name=aperture_web' | grep -q . && docker stop aperture_web && docker rm -fv aperture_web"
+        sh(script: 'docker ps -q --filter "name=aperture_web" | grep -q . && docker stop aperture_web && docker rm -fv aperture_web')
     }
     stage('Clone repo') {
         sh "git clone https://github.com/on0t0le/devops-jenkins-project.git app"
