@@ -19,4 +19,3 @@ node ('slave1') {
         sh "docker run -d --name aperture_web -p 32800:80 aperture_web"
     }
 }
-
