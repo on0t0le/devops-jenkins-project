@@ -10,6 +10,12 @@ node ('slave1') {
     stage('Docker delete previous build') {
         def container = sh(script:'docker ps -q --filter "name=aperture_web"',returnStdout: true)
         echo "${container}"
+        when {
+            not { container '' }
+        }
+        steps {
+            sh "docker rm -f ${container}"
+        }
     }
     stage('Clone repo') {
         sh "git clone https://github.com/on0t0le/devops-jenkins-project.git app"
