@@ -1,4 +1,4 @@
-node ('slave 1') {
+node ('slave1') {
     stage('Test username'){
         sh "whoami"
     }
