@@ -8,7 +8,7 @@ node ('slave1') {
         echo "Hello from ${host_name}"
     }
     stage('Docker delete previous build') {
-        def container = sh(script:'docker ps -q --filter "name=aperture-web"')
+        def container = sh(script:'docker ps -q --filter "name=aperture-web"',returnStdout: true)
         echo "${container}"
     }
     stage('Clone repo') {
