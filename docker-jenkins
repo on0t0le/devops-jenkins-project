@@ -1,14 +1,10 @@
-stage('Test master node') {
-    node('master') {
+node ('slave 1') {
+    stage('Test username'){
+        sh "whoami"
+    }
+    stage('Test slave node') {        
         def host_name = sh(script: 'cat /etc/hostname', returnStdout: true)
         echo "Hello from ${host_name}"
     }
 }
 
-stage('Test slave node') {
-    node('slave1') {
-        def host_name = sh(script: 'cat /etc/hostname', returnStdout: true)
-        echo "Hello from ${host_name}"
-        sh "docker ps"
-    }
-}
