@@ -1,4 +1,5 @@
 node ('slave1') {
+    cleanWs()
     stage('Test username') {
         sh "whoami"
     }
@@ -18,5 +19,4 @@ node ('slave1') {
     stage('Run container') {
         sh "docker run -d --name aperture_web -p 32800:80 aperture_web"
     }
-    cleanWs()
 }
