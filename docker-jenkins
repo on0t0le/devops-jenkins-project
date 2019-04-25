@@ -6,8 +6,8 @@ node ('slave1') {
         def host_name = sh(script: 'cat /etc/hostname', returnStdout: true)
         echo "Hello from ${host_name}"
     }
-    stage('Docker show') {        
-        sh "docker ps"
+    stage('Docker delete previous build') {        
+        sh "docker rm -f aperture_web"
     }
     stage('Clone repo') {
         sh "git clone https://github.com/on0t0le/devops-jenkins-project.git app"
