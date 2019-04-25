@@ -9,5 +9,14 @@ node ('slave1') {
     stage('Docker show') {        
         sh "docker ps"
     }
+    stage('Clone repo){
+        sh "git clone https://github.com/on0t0le/devops-jenkins-project.git app"
+    }
+    stage ('Build container'){
+        sh "docker build -t aperture_web app/."
+    }
+    stage ('Run container'){
+        sh "docker run -d --name aperture_web -p 32800:80 aperture_web"
+    }
 }
 
