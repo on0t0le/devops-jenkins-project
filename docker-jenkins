@@ -6,5 +6,8 @@ node ('slave1') {
         def host_name = sh(script: 'cat /etc/hostname', returnStdout: true)
         echo "Hello from ${host_name}"
     }
+    stage('Docker show') {        
+        sh "docker ps"
+    }
 }
 
